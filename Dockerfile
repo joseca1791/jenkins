@@ -9,13 +9,10 @@ RUN powershell Install-WindowsFeature Web-Windows-Auth
 RUN powershell Install-WindowsFeature NET-Framework-45-ASPNET
 RUN powershell Install-WindowsFeature Web-Asp-Net45
 RUN powershell Install-WindowsFeature NET-WCF-HTTP-Activation45
-RUN powershell Set-Acl "C:/inetpub/wwwroot" Get-Acl "C:/inetpub/wwwroot".SetAccessRule(New-Object System.Security.Accesscontrol.FileSystemAccessRule("IIS_IUSRS","Write","Allow"))
 RUN net start wmsvc
 RUN powershell -NoProfile -Command Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1
 COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
 EXPOSE 443
 EXPOSE 80
-RUN icacls "C:\inetpub/wwwroot\*" /grant Everyone:F /T
-
-
+RUN icacls "C:\inetpub/wwwroot\*" /grant IIS_IUSR:F /T
