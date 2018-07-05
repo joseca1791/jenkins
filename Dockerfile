@@ -7,7 +7,6 @@ RUN powershell Install-WindowsFeature Web-Windows-Auth
 RUN powershell Install-WindowsFeature NET-Framework-45-ASPNET
 RUN powershell Install-WindowsFeature Web-Asp-Net45
 RUN powershell Install-WindowsFeature NET-WCF-HTTP-Activation45
-RUN powershell Get-WebConfigFile
 RUN net start wmsvc
 COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
