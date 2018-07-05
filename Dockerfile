@@ -2,7 +2,7 @@ FROM microsoft/windowsservercore
 FROM microsoft/aspnet
 LABEL maintainer="josecbarrantes@hotmail.com"
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
-COPY ./OdeToFood/OdeToFood/bin/release/PublishOutput /inetpub/wwwroot
+COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
 EXPOSE 43
 EXPOSE 80
