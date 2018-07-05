@@ -4,7 +4,7 @@ LABEL maintainer="josecbarrantes@hotmail.com"
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN	NET USER testing "Welcome1!" /ADD
 RUN	NET LOCALGROUP "Administrators" "testing" /add
-RUN icacls "C:\IIS\*" /grant "everyone":(f) /T
+RUN icacls "C:\IIS\*" /grant Everyone:F /T
 RUN powershell Install-WindowsFeature Web-Mgmt-Service
 RUN powershell Install-WindowsFeature Web-Windows-Auth
 RUN powershell Install-WindowsFeature NET-Framework-45-ASPNET
