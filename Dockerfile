@@ -2,7 +2,7 @@ FROM microsoft/windowsservercore
 FROM microsoft/aspnet
 LABEL maintainer="josecbarrantes@hotmail.com"
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
-RUN	NET USER testing "Welcome1!" /ADD
+RUN	NET USER NETWORK SERVICE "Welcome1!" /ADD
 RUN	NET LOCALGROUP "Administrators" "testing" /add
 RUN powershell Install-WindowsFeature Web-Mgmt-Service
 RUN powershell Install-WindowsFeature Web-Windows-Auth
@@ -15,4 +15,4 @@ COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
 EXPOSE 443
 EXPOSE 80
-RUN icacls "C:\inetpub/wwwroot\*" /grant IIS_IUSR:F /T
+RUN icacls "C:\inetpub/wwwroot\*" /grant NETWORK SERVICE:F /T
