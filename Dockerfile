@@ -12,5 +12,5 @@ COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
 EXPOSE 443
 EXPOSE 80
-RUN icacls "C:\inetpub/wwwroot\*" /grant "NT AUTHORITY\NetworkService":F /T
+RUN icacls "C:\inetpub/wwwroot\*" /grant "IIS_IUSRS":F /T
 RUN iisreset
