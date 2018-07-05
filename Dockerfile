@@ -10,7 +10,6 @@ RUN powershell Install-WindowsFeature NET-Framework-45-ASPNET
 RUN powershell Install-WindowsFeature Web-Asp-Net45
 RUN powershell Install-WindowsFeature NET-WCF-HTTP-Activation45
 RUN net start wmsvc
-RUN sc config "wmsvc" start= auto
 RUN powershell -NoProfile -Command \Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1
 COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
