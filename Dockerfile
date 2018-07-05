@@ -4,7 +4,6 @@ LABEL maintainer="josecbarrantes@hotmail.com"
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN	NET USER testing "Welcome1!" /ADD
 RUN	NET LOCALGROUP "Administrators" "testing" /add
-RUN icacls "C:\IIS\*" /grant Everyone:F /T
 RUN powershell Install-WindowsFeature Web-Mgmt-Service
 RUN powershell Install-WindowsFeature Web-Windows-Auth
 RUN powershell Install-WindowsFeature NET-Framework-45-ASPNET
@@ -18,3 +17,4 @@ COPY ./PublishOutput /inetpub/wwwroot
 EXPOSE 8082
 EXPOSE 443
 EXPOSE 80
+RUN icacls "C:\inetpub/wwwroot\*" /grant Everyone:F /T
