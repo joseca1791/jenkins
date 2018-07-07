@@ -1,7 +1,7 @@
 FROM alpine
 LABEL maintainer="Jose Carlos"
 RUN apk add --update nodejs nodejs-npm
-RUN npm cache clean
+RUN npm cache clean --force
 COPY . /src
 WORKDIR /src 
 RUN npm install -g npm
