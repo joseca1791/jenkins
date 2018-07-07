@@ -4,5 +4,6 @@ RUN apk add --update nodejs nodejs-npm
 COPY . /src
 WORKDIR /src 
 RUN npm init
+RUN npm install
 EXPOSE 8083
 ENTRYPOINT ["node","./hola.html"]
